@@ -1,0 +1,21 @@
+<nav class="sticky top-0 left-0" data-controller="menu">
+  <div class="pr-4 py-5 bg-gray-100 flex justify-end">
+    <div>
+      <div class="px-4 cursor-pointer md:hidden" data-action="click->menu#toggle" id="burger">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </div>
+
+      <ul id="menu" data-menu-target="menu" class="pt-4 space-y-1 text-left text-sm hidden gap-4 md:flex md:space-y-0">
+        <% if signed_in? %>
+          <li class="px-3 py-1"><%= current_user.username %></li>
+          <li class="px-3 py-1 hover:underline underline-offset-4"><%= button_to "Sign out", destroy_user_session_path, method: :delete  %></li>
+        <% else %>
+          <li class="px-3 py-1 hover:underline underline-offset-8"><%= link_to "Sign in", new_user_session_path	%></li>
+          <li class="px-3 py-1 hover:underline underline-offset-8"><%= link_to "Sign up", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

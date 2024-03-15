@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "new_post" do %>
+  <%= form_with model: @post, class: "ml-8 mb-8 flex space-x-4 items-center" do |form| %>
+    <%= form.text_field :body, class: "shadow-md rounded-md border-gray-300" %>
+    <%= form.submit "Send", class: "bg-blue-500 px-4 py-2  text-white rounded-md p-2 ml-2 shadow-md hover:bg-blue-600"  %>
+  <% end %>
+<% end %>
