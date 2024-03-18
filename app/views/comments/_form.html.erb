@@ -1,0 +1,6 @@
+<%= turbo_frame_tag dom_id(post, :comments_form) do %>
+  <%= form_with model: [post, Comment.new], local: true, class: "flex justify-between" do |f| %>
+    <%= f.text_field :body, class: "border px-3 py-2 border-gray-300 w-full rounded-md p-2 shadow-md", placeholder: "Add a comment" %>
+    <%= f.submit "Post", class: "bg-blue-500 px-4 py-2  text-white rounded-md p-2 ml-2 shadow-md hover:bg-blue-600" %>
+  <% end %>
+<% end %>
