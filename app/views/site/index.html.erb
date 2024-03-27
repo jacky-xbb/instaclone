@@ -1,13 +1,9 @@
-<% if user_signed_in? %>
   <%= turbo_frame_tag "new_post" do %>
     <div class="flex justify-start ml-8 mb-8">
-      <%= link_to "New Post", new_post_path, class: "px-3 py-2 text-white
+      <%= link_to "New Post", new_post_path, data: { turbo_frame: "_top" }, class: "px-3 py-2 text-white
         rounded-lg bg-blue-400 hover:bg-blue-600 hover:-translate-y-0.5 duration-200" %>
     </div>
   <% end %>
-<% else %>
-  <p class="text-center"> Please sign in first. </p>
-<% end %>
 
 <div id="posts", class="space-y-6">
   <%= render @posts %>
