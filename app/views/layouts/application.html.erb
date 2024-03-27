@@ -12,8 +12,10 @@
   </head>
 
   <body>
-    <%= render "layouts/flash" %>
     <%= render "layouts/navbar" %>
+    <div id="flash">
+      <%= render "layouts/flash" %>
+    </div>
     <main class="mt-8">
       <%= yield %>
     </main>

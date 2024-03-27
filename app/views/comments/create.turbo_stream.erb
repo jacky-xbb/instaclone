@@ -1,6 +1,5 @@
 <%= turbo_stream.update dom_id(@post, :comments_list), partial: "comments/list", locals: { post: @post } %>
 
-
 <%= turbo_stream.update dom_id(@post, :comments_count) do %>
   <%= pluralize(@post.comments.count, "comment") %>
 <% end %>
@@ -8,3 +7,5 @@
 <%= turbo_stream.update dom_id(@post, :comments_form) do %>
   <%= render partial: "comments/form", locals: { post: @post } %>
 <% end %>
+
+<%= render_turbo_stream_flash_messages %>

@@ -1,6 +1,11 @@
 <%= turbo_frame_tag "new_post" do %>
-  <%= form_with model: @post, class: "ml-8 mb-8 flex space-x-4 items-center" do |form| %>
-    <%= form.text_field :body, class: "shadow-md rounded-md border-gray-300" %>
-    <%= form.submit "Send", class: "bg-blue-500 px-4 py-2  text-white rounded-md p-2 ml-2 shadow-md hover:bg-blue-600"  %>
+  <%= form_with model: @post, class: "m-8 space-x-4 flex flex-col" do |f| %>
+    <%= render "shared/errors", object: @post %>
+
+    <div class="flex">
+      <%= f.text_field :body, class: "rounded-md shadow-md" %>
+      <%= f.submit 'Save', class: "bg-blue-500 px-4 py-2 text-white rounded-md p-2 ml-2 shadow-md hover:bg-blue-600" %>
+    </div>
+
   <% end %>
 <% end %>

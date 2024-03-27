@@ -1,4 +1,4 @@
-<div id="flash">
+<div id="flash" class="flex mt-2 justify-center">
   <% flash.each do |message_type, message| %>
     <div class="<%= flash_classname(message_type) %>">
       <%= message %>

@@ -5,13 +5,9 @@ class ThumbsController < ApplicationController
   def create
     thumb = @comment.thumbs.create(user: current_user)
 
-    if thumb.persisted?
-      respond_to do |format|
-        format.html { redirect_to @comment }
-        format.turbo_stream
-      end
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to root_path }
     end
   end
 
@@ -20,8 +16,8 @@ class ThumbsController < ApplicationController
     thumb&.destroy
 
     respond_to do |format|
-      format.html { redirect_to @comment }
       format.turbo_stream
+      format.html { redirect_to root_path }
     end
   end
 

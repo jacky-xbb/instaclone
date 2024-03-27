@@ -13,4 +13,8 @@ module ApplicationHelper
       'py-2 px-3 bg-blue-50 mb-5 text-blue-500 font-medium rounded-lg inline-block'
     end
   end
+
+  def render_turbo_stream_flash_messages
+    turbo_stream.prepend 'flash', partial: 'layouts/flash'
+  end
 end

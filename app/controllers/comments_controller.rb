@@ -3,14 +3,11 @@ class CommentsController < ApplicationController
   before_action :set_post
 
   def create
-    @comment = @post.comments.create(comment_params.merge(user: current_user))
-    if @comment.persisted?
-      respond_to do |format|
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
-        format.turbo_stream
-      end
-    else
-      render :new, status: :unprocessable_entity
+    @comment = @post.comments.create!(comment_params.merge(user: current_user))
+
+    respond_to do |format|
+      format.turbo_stream { flash.now[:notice] = 'Comment was successfully created.' }
+      format.html { redirect_to root_path, notice: 'Comment was successfully created.' }
     end
   end
 

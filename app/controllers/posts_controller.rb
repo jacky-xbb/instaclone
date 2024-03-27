@@ -7,8 +7,12 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.valid?
-      @post.save
+
+    if @post.save
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = 'Post was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
+      end
     else
       render :new, status: :unprocessable_entity
     end

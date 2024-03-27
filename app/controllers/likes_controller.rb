@@ -5,13 +5,9 @@ class LikesController < ApplicationController
   def create
     @like = @post.likes.create(user: current_user)
 
-    if @like.persisted?
-      respond_to do |format|
-        format.html { redirect_to @post }
-        format.turbo_stream
-      end
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to root_path }
     end
   end
 
@@ -20,8 +16,8 @@ class LikesController < ApplicationController
     @like&.destroy
 
     respond_to do |format|
-      format.html { redirect_to @post }
       format.turbo_stream
+      format.html { redirect_to root_path }
     end
   end
 
